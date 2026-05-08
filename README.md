@@ -1,9 +1,29 @@
+
 # PRODIGY_WD_04 - Personal Portfolio Website
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-https://chaithanya8861.github.io/PRODIGY_WD_04/-orange?style=for-the-badge&logo=githubpages)](https://chaithanya8861.github.io/PRODIGY_WD_04/)
 [![GitHub](https://img.shields.io/badge/GitHub-Chaithanya8861-181717?style=for-the-badge&logo=github)](https://github.com/Chaithanya8861)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Chaithanya-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/chaithanya-094a71322)
 [![YouTube](https://img.shields.io/badge/YouTube-Chaithu's_Art_Gallery-FF0000?style=for-the-badge&logo=youtube)](https://youtube.com/@chaithanya_shettigar)
+
+---
+
+## 📸 Screenshots
+
+### Desktop View - Hero Section
+![Hero Section](screenshots/1-hero-section.png)
+
+### Skills Section
+![Skills Section](screenshots/2-skills-section.png)
+
+### Projects Section
+![Projects Section](screenshots/3-projects-section.png)
+
+### About Me & Timeline
+![About Me Section](screenshots/4-about-section.png)
+
+### Mobile Responsive View
+![Mobile View](screenshots/5-mobile-view.png)
 
 ---
 
@@ -55,6 +75,7 @@ This is my personal portfolio website created as part of my **Prodigy Infotech I
 ---
 
 ## 📁 Project Structure
+
 PRODIGY_WD_04/
 │
 ├── index.html # Main HTML file
