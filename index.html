@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chaithanya | Web Developer & UI/UX Enthusiast</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fcf9f7;
+      color: #1e1b2b;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* custom cursor glow — warm creative vibe */
+    .cursor-glow {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(236, 72, 153, 0.04) 70%);
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      transition: transform 0.08s ease;
+      opacity: 0.5;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1ede8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f59e0b;
+      border-radius: 10px;
+    }
+
+    section {
+      padding: 100px 5%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* navigation glassmorphism */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(252, 249, 247, 0.88);
+      z-index: 100;
+      padding: 1rem 5%;
+      border-bottom: 1px solid #f5b56e40;
+      transition: all 0.3s ease;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #d97706, #be185d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #3c2a1f;
+      font-weight: 500;
+      transition: 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: #d97706;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: #f59e0b;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #d97706;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(125deg, #fff9f5 0%, #fef3e8 100%);
+      overflow: hidden;
+    }
+    .hero .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+      justify-content: space-between;
+    }
+    .hero-content {
+      flex: 1.2;
+    }
+    .hero-badge {
+      font-size: 1rem;
+      background: rgba(245, 158, 11, 0.2);
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #f5b56e;
+      backdrop-filter: blur(4px);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      color: #b45309;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #2c1a0e;
+    }
+    .hero h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #7c5e3e;
+      margin-bottom: 1rem;
+    }
+    .gradient-text {
+      background: linear-gradient(120deg, #d97706, #db2777);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 550px;
+      margin: 1rem 0 2rem;
+      color: #5e4b34;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(100deg, #f59e0b, #d97706);
+      color: white;
+      box-shadow: 0 8px 18px -6px #f59e0b80;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 25px -8px #d97706;
+    }
+    .btn-outline {
+      border: 1.5px solid #f59e0b;
+      background: transparent;
+      color: #b45309;
+    }
+    .btn-outline:hover {
+      background: rgba(245, 158, 11, 0.1);
+      transform: translateY(-3px);
+    }
+    .hero-image {
+      flex: 0.8;
+      text-align: center;
+      animation: floatArt 6s ease-in-out infinite;
+    }
+    .hero-image img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 42% 58% 67% 33% / 44% 39% 61% 56%;
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.2);
+      border: 3px solid #ffd8b5;
+      transition: all 0.3s;
+    }
+    .hero-image img:hover {
+      transform: scale(1.01);
+      border-radius: 50%;
+    }
+
+    /* Skills */
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #2c1a0e;
+      letter-spacing: -0.02em;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+    .skill-card {
+      background: #ffffffdd;
+      backdrop-filter: blur(6px);
+      border: 1px solid #fed7aa;
+      border-radius: 2rem;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    .skill-card i {
+      font-size: 3rem;
+      color: #e07c1f;
+      margin-bottom: 1rem;
+    }
+    .skill-card h3 {
+      font-size: 1.3rem;
+      color: #4d3a26;
+    }
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: #f59e0b;
+      background: #fff7ef;
+    }
+
+    /* Projects Grid with live links */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: #ffffff;
+      border-radius: 2rem;
+      overflow: hidden;
+      border: 1px solid #ffe2bf;
+      transition: all 0.4s;
+      box-shadow: 0 12px 20px -15px rgba(0,0,0,0.05);
+    }
+    .project-card:hover {
+      transform: translateY(-12px);
+      border-color: #f59e0b;
+      box-shadow: 0 25px 35px -14px #d9770666;
+    }
+    .project-img {
+      height: 180px;
+      background: linear-gradient(145deg, #ffefdb, #ffe6d0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #e07c1f;
+    }
+    .project-info {
+      padding: 1.6rem;
+    }
+    .project-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #2b1c0c;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 1rem;
+      color: #d97706;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .project-link:hover {
+      gap: 14px;
+      color: #b45309;
+    }
+    .tech-tag {
+      display: inline-block;
+      background: #ffefdb;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      margin: 0.5rem 0.5rem 0 0;
+      color: #b45309;
+    }
+
+    /* About + Timeline */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-text {
+      flex: 1.5;
+    }
+    .about-text p {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      color: #2b2a2e;
+    }
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    .social-icon {
+      background: #ffefdb;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      color: #b45309;
+      font-weight: 500;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .social-icon:hover {
+      background: #f59e0b20;
+      transform: translateY(-3px);
+    }
+    .timeline {
+      flex: 1;
+      background: #fffbf5;
+      border-radius: 2rem;
+      padding: 1.8rem;
+      border-left: 5px solid #f59e0b;
+    }
+    .timeline-item {
+      margin-bottom: 1.6rem;
+    }
+    .timeline-item h4 {
+      color: #d97706;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #f1e0cc;
+      background: #fffaf5;
+      color: #79553a;
+    }
+
+    @keyframes floatArt {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(255, 250, 245, 0.98);
+        backdrop-filter: blur(20px);
+        text-align: center;
+        padding: 2rem;
+        gap: 1.8rem;
+        transition: 0.3s;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .menu-icon {
+        display: block;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero-image img {
+        width: 220px;
+        height: 220px;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">Chaithanya</div>
+      <div class="menu-icon" id="menuToggle"><i class="fas fa-palette"></i></div>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About & Journey</a>
+      </div>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content" data-aos="fade-right" data-aos-duration="900">
+        <div class="hero-badge"><i class="fas fa-laptop-code"></i> MCA student · Creative Developer</div>
+        <h1>Hi, I'm <span class="gradient-text">Chaithanya</span></h1>
+        <h2>crafting engaging digital experiences & UI/UX magic</h2>
+        <p>BCA graduate, MCA student, passionate UI/UX enthusiast. I blend code with creativity — building interactive web apps, quizzes, and utility platforms. Based in Mangalore, India.</p>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Explore work</a>
+          <a href="#about" class="btn btn-outline"><i class="fas fa-feather-alt"></i> My story</a>
+        </div>
+      </div>
+      <div class="hero-image" data-aos="fade-left" data-aos-delay="150">
+        <!-- using artistic avatar that matches creative developer vibe, can be replaced with actual photo -->
+        <img src="/image/Profile.jpeg" alt="Chaithanya portrait - creative developer">
+    </div>
+  </section>
+
+  <!-- Skills section -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">✨ creative toolkit</div>
+      <div class="skills-grid">
+        <div class="skill-card" data-aos="zoom-in"><i class="fab fa-html5"></i><h3>HTML5/CSS3</h3></div>
+        <div class="skill-card" data-aos="zoom-in" data-aos-delay="50"><i class="fab fa-js"></i><h3>JavaScript</h3></div>
+        <div class="skill-card" data-aos="zoom-in" data-aos-delay="100"><i class="fab fa-python"></i><h3>Python</h3></div>
+        <div class="skill-card" data-aos="zoom-in" data-aos-delay="150"><i class="fas fa-database"></i><h3>DBMS</h3></div>
+        <div class="skill-card" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-figma"></i><h3>UI/UX Design</h3></div>
+        <div class="skill-card" data-aos="zoom-in" data-aos-delay="250"><i class="fas fa-paintbrush"></i><h3>Art & Illustration</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section with real live links -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">📁 live projects</div>
+      <div class="projects-grid">
+        <!-- QuizMaster -->
+        <div class="project-card" data-aos="flip-left">
+          <div class="project-img"><i class="fas fa-question-circle"></i></div>
+          <div class="project-info">
+            <h3>QuizMaster App</h3>
+            <p>Interactive quiz platform to test knowledge across categories. Real-time scoring, smooth UI, and dynamic questions.</p>
+            <span class="tech-tag">JavaScript</span><span class="tech-tag">Firebase</span>
+            <div><a href="https://quizmaster-801c1.web.app/" target="_blank" class="project-link">Live Demo →</a></div>
+          </div>
+        </div>
+        <!-- Water Tanker Delivery -->
+        <div class="project-card" data-aos="flip-left" data-aos-delay="100">
+          <div class="project-img"><i class="fas fa-truck-water"></i></div>
+          <div class="project-info">
+            <h3>Water Tanker Delivery</h3>
+            <p>Book verified water tankers in minutes. Real-time availability, transparent pricing, instant confirmation — utility-first platform.</p>
+            <span class="tech-tag">React</span><span class="tech-tag">Netlify</span>
+            <div><a href="https://techwatertanker.netlify.app/" target="_blank" class="project-link">Live Demo →</a></div>
+          </div>
+        </div>
+        <!-- Portfolio Website (existing) -->
+        <div class="project-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="project-img"><i class="fas fa-id-card"></i></div>
+          <div class="project-info">
+            <h3>Portfolio Website</h3>
+            <p>Personal portfolio showcasing projects, hackathon experience & creative work. Fully responsive and deployed on GitHub Pages.</p>
+            <span class="tech-tag">HTML/CSS/JS/Firebase</span>
+            <div><a href="https://chaithanya8861.github.io/my-portfolio/" target="_blank" class="project-link">Live Demo →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="project-img"><i class="fas fa-id-card"></i></div>
+          <div class="project-info">
+            <h3>Stop watch</h3>
+            <p>Premium watch-themed stopwatch with lap tracking, keyboard shortcuts, and glass-morphism design. Fully responsive and deployed on GitHub Pages.</p>
+            <span class="tech-tag">HTML/CSS/JS</span>
+            <div><a href="https://chaithanya8861.github.io/PRODIGY_WD_02/" target="_blank" class="project-link">Live Demo →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- About + professional journey with socials -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">📖 about & milestones</div>
+      <div class="about-grid">
+        <div class="about-text" data-aos="fade-right">
+          <p><strong>Hello, I'm Chaithanya</strong> — MCA student at St Aloysius(Deemed To be University), BCA graduate from Vivekananda College Puttur. I'm passionate about crafting engaging digital experiences and clean UI. I build web apps, interactive tools, and love solving real-world problems through code.</p>
+          <p>🎯 <strong>Hackathon at Akanksha Charitable Trust</strong> taught me rapid prototyping. I developed a <strong>Quiz Game Application</strong> as my BCA mini project — timed questions & scoring. I also built the Water Tanker platform to digitize local water delivery.</p>
+          <div class="social-links">
+            <a href="https://github.com/Chaithanya8861" target="_blank" class="social-icon"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/chaithanya-094a71322" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://youtube.com/@chaithanya_shettigar" target="_blank" class="social-icon"><i class="fab fa-youtube"></i> YouTube: Art Gallery</a>
+          </div>
+          <p>🎨 <strong>YouTube (Chaithu's Art Gallery)</strong> — I paint canvas art, watercolors, pencil sketches. Experimenting with AI animated videos soon. I also enjoy photography & videography.</p>
+          <p>🌱 <strong>Social Service — Ranger (Bharat Scouts & Guides)</strong>: environmental drives, community leadership, and awareness programs.</p>
+        </div>
+        <div class="timeline" data-aos="fade-left">
+          <div class="timeline-item"><h4><i class="fas fa-graduation-cap"></i> MCA (Current)</h4><p>Master of Computer Applications — full-stack focus & design systems</p></div>
+          <div class="timeline-item"><h4><i class="fas fa-university"></i> BCA Graduate</h4><p>Bachelor of Computer Applications — projects & academic excellence</p></div>
+          <div class="timeline-item"><h4><i class="fas fa-trophy"></i> Hackathon Winner</h4><p>Akanksha Charitable Trust — rapid prototyping certificate</p></div>
+          <div class="timeline-item"><h4><i class="fas fa-leaf"></i> Leadership</h4><p>Ranger — Bharat Scouts & Guides, community volunteer</p></div>
+          <div class="timeline-item"><h4><i class="fas fa-map-marker-alt"></i> Location</h4><p>Mangalore / India — open for collabs & creative projects</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & footer -->
+  <footer>
+    <div style="max-width:800px; margin:0 auto;">
+      <p style="font-size:1.2rem; margin-bottom:0.5rem;"><i class="fas fa-envelope"></i> chaithanya8861@gmail.com</p>
+      <p>Have a project in mind or want to collaborate? Reach out — I'm available for web dev, creative art projects, and UI/UX design.</p>
+      <div style="margin:1.2rem 0; display: flex; gap: 1.2rem; justify-content: center;">
+        <a href="https://github.com/Chaithanya8861" target="_blank" style="color:#b45309; font-size:1.5rem;"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/chaithanya-094a71322" target="_blank" style="color:#b45309; font-size:1.5rem;"><i class="fab fa-linkedin"></i></a>
+        <a href="https://youtube.com/@chaithanya_shettigar" target="_blank" style="color:#b45309; font-size:1.5rem;"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>© 2026 Chaithanya — All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: false, mirror: true });
+    const cursor = document.getElementById('cursorGlow');
+    if (cursor) {
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+    }
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.style.background = window.scrollY > 40 ? 'rgba(252, 249, 247, 0.96)' : 'rgba(252, 249, 247, 0.88)';
+    });
+  </script>
+</body>
+</html>
