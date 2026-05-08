@@ -14,16 +14,16 @@
 ![Hero Section](1-hero-section.png)
 
 ### Skills Section
-![Skills Section](screenshots/2-skills-section.png)
+![Skills Section](2-skills-section.png)
 
 ### Projects Section
-![Projects Section](screenshots/3-projects-section.png)
+![Projects Section](3-projects-section.png)
 
 ### About Me & Timeline
-![About Me Section](screenshots/4-about-section.png)
+![About Me Section](4-about-section.png)
 
 ### Mobile Responsive View
-![Mobile View](screenshots/5-mobile-view.png)
+![Mobile View](5-mobile-view.png)
 
 ---
 
