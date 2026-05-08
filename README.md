@@ -11,7 +11,7 @@
 ## 📸 Screenshots
 
 ### Desktop View - Hero Section
-![Hero Section](screenshots/1-hero-section.png)
+![Hero Section](1-hero-section.png)
 
 ### Skills Section
 ![Skills Section](screenshots/2-skills-section.png)
